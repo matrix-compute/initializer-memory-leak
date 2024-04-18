@@ -1,0 +1,9 @@
+{
+  "actions": {
+    "close": "Închide",
+    "demo_action": "Solicitați Demo",
+    "send_request": "Trimite cererea",
+    "find_out_more": "Află mai mult",
+    "check": "Verifică"
+  }
+}

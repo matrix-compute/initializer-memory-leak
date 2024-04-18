@@ -1,0 +1,11 @@
+{
+    "theme_color": "#55ba94",
+    "background_color": "#fff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Test Salon",
+    "short_name": "Test",
+    "description": "Test application",
+    "icons": []
+}

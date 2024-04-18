@@ -1,0 +1,278 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "78e7354f-05ec-417a-97d9-e00b96960017"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "test-landing": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
+          "options": {
+            "outputPath": "dist/test-landing/browser",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/robots.txt"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "./node_modules/animate.css/animate.min.css",
+              "./node_modules/quill/dist/quill.snow.css"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "",
+                "./src/styles"
+              ]
+            },
+            "scripts": [
+            ]
+          },
+          "configurations": {
+            "production": {
+              "index": {
+                "input": "src/index.prod.html",
+                "output": "index.html"
+              },
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "100kb",
+                  "maximumError": "1mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "assets": [
+                "src/favicon.ico",
+                "src/assets",
+                "src/manifest.webmanifest",
+                {
+                  "glob": "robots.txt",
+                  "input": "src/robots/prod",
+                  "output": "/"
+                },
+                "src/market.json"
+              ]
+            },
+            "development": {
+              "index": {
+                "input": "src/index.dev.html",
+                "output": "index.html"
+              },
+              "buildOptimizer": false,
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ],
+              "assets": [
+                "src/favicon.ico",
+                "src/assets",
+                "src/manifest.webmanifest",
+                {
+                  "glob": "robots.txt",
+                  "input": "src/robots/dev",
+                  "output": "/"
+                },
+                "src/market.json"
+              ]
+            },
+            "local": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "assets": [
+                "src/favicon.ico",
+                "src/assets",
+                "src/manifest.webmanifest",
+                "src/market.json"
+              ]
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "test-landing:build:production"
+            },
+            "development": {
+              "buildTarget": "test-landing:build:development"
+            },
+            "local": {
+              "buildTarget": "test-landing:build:local"
+            }
+          },
+          "defaultConfiguration": "local"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "test-landing:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/robots.txt",
+              "src/market.json"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "./node_modules/animate.css/animate.min.css",
+              "./node_modules/quill/dist/quill.snow.css"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "",
+                "./src/styles"
+              ]
+            },
+            "scripts": [
+            ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/test-landing/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "",
+                "./src/styles"
+              ]
+            },
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": false,
+              "extractLicenses": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ]
+            }, ,
+            "local": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "test-landing:build:development",
+              "serverTarget": "test-landing:server:development"
+            },
+            "local": {
+              "browserTarget": "test-landing:build:local",
+              "serverTarget": "test-landing:server:local"
+            },
+            "production": {
+              "browserTarget": "test-landing:build:production",
+              "serverTarget": "test-landing:server:production"
+            }
+          },
+          "defaultConfiguration": "local"
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "test-landing:build:production",
+              "serverTarget": "test-landing:server:production"
+            },
+            "development": {
+              "browserTarget": "test-landing:build:development",
+              "serverTarget": "test-landing:server:development"
+            },
+            "local": {
+              "browserTarget": "test-landing:build:local",
+              "serverTarget": "test-landing:server:local"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  }
+}

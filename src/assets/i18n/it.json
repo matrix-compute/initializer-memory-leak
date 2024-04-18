@@ -1,0 +1,10 @@
+{
+  "actions": {
+    "close": "Chiudi",
+    "demo_action": "Richiedi una demo",
+    "send_request": "Invia la richiesta",
+    "find_out_more": "Scopri di più",
+    "check": "Dai un'occhiata"
+  }
+}
+
