@@ -71,7 +71,7 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@types/express": "^4.17.0",
     "@types/jasmine": "~4.3.0",
-    "@types/node": "^16.11.7",
+    "@types/node": "^16.18.95",
     "artillery": "^2.0.10",
     "husky": "^9.0.11",
     "jasmine-core": "~4.6.0",
