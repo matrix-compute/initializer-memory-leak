@@ -80,8 +80,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "lint-staged": "^15.2.2",
-    "stylelint": "^15.9.0",
+    "lint-staged": "^15.2.4",
+    "stylelint": "^16.6.1",
     "typescript": "~5.2.2"
   },
   "lint-staged": {
